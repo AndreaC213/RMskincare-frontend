@@ -1,17 +1,13 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { reducer as calendarReducer } from 'src/slices/calendar';
-import { reducer as chatReducer } from 'src/slices/chat';
+import { reducer as appointmentReducer } from 'src/slices/appointment';
+import { reducer as shiftReducer } from 'src/slices/shift';
 import { reducer as formReducer } from 'redux-form';
-import { reducer as kanbanReducer } from 'src/slices/kanban';
-import { reducer as mailReducer } from 'src/slices/mail';
 import { reducer as notificationReducer } from 'src/slices/notification';
 
 const rootReducer = combineReducers({
-  calendar: calendarReducer,
-  chat: chatReducer,
+  appointment: appointmentReducer,
+  shift: shiftReducer,
   form: formReducer,
-  kanban: kanbanReducer,
-  mail: mailReducer,
   notifications: notificationReducer
 });
 

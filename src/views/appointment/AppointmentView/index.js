@@ -32,14 +32,14 @@ import {
   selectRange,
   openModal,
   closeModal
-} from 'src/slices/shift';
+} from 'src/slices/appointment';
 import Header from './Header';
 import Toolbar from './Toolbar';
 import AddEditEventForm from './AddEditEventForm';
-import Filter from '../ShiftView/Filter'
+import Filter from './Filter';
 
 const selectedEventSelector = (state) => {
-  const { events, selectedEventId } = state.shift;
+  const { events, selectedEventId } = state.appointment;
 
   if (selectedEventId) {
     return events.find((_event) => _event.id === selectedEventId);
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3)
   },
-  shift: {
+  appointment: {
     marginTop: theme.spacing(3),
     padding: theme.spacing(2),
     '& .fc-unthemed .fc-head': {
@@ -138,58 +138,58 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ShiftView = () => {
+const AppointmentView = () => {
   const classes = useStyles();
-  const shiftRef = useRef(null);
+  const appointmentRef = useRef(null);
   const theme = useTheme();
   const mobileDevice = useMediaQuery(theme.breakpoints.down('sm'));
   const dispatch = useDispatch();
-  const { events, isModalOpen, selectedRange } = useSelector((state) => state.shift);
+  const { events, isModalOpen, selectedRange } = useSelector((state) => state.appointment);
   const selectedEvent = useSelector(selectedEventSelector);
   const [date, setDate] = useState(moment().toDate());
   const [view, setView] = useState(mobileDevice ? 'listWeek' : 'dayGridMonth');
 
   const handleDateToday = () => {
-    const shiftEl = shiftRef.current;
+    const appointmentEl = appointmentRef.current;
 
-    if (shiftEl) {
-      const shiftApi = shiftEl.getApi();
+    if (appointmentEl) {
+      const appointmentApi = appointmentEl.getApi();
 
-      shiftApi.today();
-      setDate(shiftApi.getDate());
+      appointmentApi.today();
+      setDate(appointmentApi.getDate());
     }
   };
 
   const handleViewChange = (newView) => {
-    const shiftEl = shiftRef.current;
+    const appointmentEl = appointmentRef.current;
 
-    if (shiftEl) {
-      const shiftApi = shiftEl.getApi();
+    if (appointmentEl) {
+      const appointmentApi = appointmentEl.getApi();
 
-      shiftApi.changeView(newView);
+      appointmentApi.changeView(newView);
       setView(newView);
     }
   };
 
   const handleDatePrev = () => {
-    const shiftEl = shiftRef.current;
+    const appointmentEl = appointmentRef.current;
 
-    if (shiftEl) {
-      const shiftApi = shiftEl.getApi();
+    if (appointmentEl) {
+      const appointmentApi = appointmentEl.getApi();
 
-      shiftApi.prev();
-      setDate(shiftApi.getDate());
+      appointmentApi.prev();
+      setDate(appointmentApi.getDate());
     }
   };
 
   const handleDateNext = () => {
-    const shiftEl = shiftRef.current;
+    const appointmentEl = appointmentRef.current;
 
-    if (shiftEl) {
-      const shiftApi = shiftEl.getApi();
+    if (appointmentEl) {
+      const appointmentApi = appointmentEl.getApi();
 
-      shiftApi.next();
-      setDate(shiftApi.getDate());
+      appointmentApi.next();
+      setDate(appointmentApi.getDate());
     }
   };
 
@@ -198,12 +198,12 @@ const ShiftView = () => {
   };
 
   const handleRangeSelect = (arg) => {
-    const shiftEl = shiftRef.current;
+    const appointmentEl = appointmentRef.current;
 
-    if (shiftEl) {
-      const shiftApi = shiftEl.getApi();
+    if (appointmentEl) {
+      const appointmentApi = appointmentEl.getApi();
 
-      shiftApi.unselect();
+      appointmentApi.unselect();
     }
 
     dispatch(selectRange(arg.start, arg.end));
@@ -246,13 +246,13 @@ const ShiftView = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const shiftEl = shiftRef.current;
+    const appointmentEl = appointmentRef.current;
 
-    if (shiftEl) {
-      const shiftApi = shiftEl.getApi();
+    if (appointmentEl) {
+      const appointmentApi = appointmentEl.getApi();
       const newView = mobileDevice ? 'listWeek' : 'dayGridMonth';
 
-      shiftApi.changeView(newView);
+      appointmentApi.changeView(newView);
       setView(newView);
     }
   }, [mobileDevice]);
@@ -260,7 +260,7 @@ const ShiftView = () => {
   return (
     <Page
       className={classes.root}
-      title="Shift"
+      title="Appointment"
     >
       <Container maxWidth={false}>
         <Header onAddClick={handleAddClick} />
@@ -276,7 +276,7 @@ const ShiftView = () => {
             onViewChange={handleViewChange}
             view={view}
           />
-          <Paper className={classes.shift}>
+          <Paper className={classes.appointment}>
             <FullCalendar
               allDayMaintainDuration
               defaultDate={date}
@@ -291,7 +291,7 @@ const ShiftView = () => {
               events={events}
               header={false}
               height={800}
-              ref={shiftRef}
+              ref={appointmentRef}
               rerenderDelay={10}
               select={handleRangeSelect}
               selectable
@@ -329,4 +329,4 @@ const ShiftView = () => {
   );
 };
 
-export default ShiftView;
+export default AppointmentView;

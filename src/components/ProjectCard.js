@@ -61,10 +61,7 @@ const ProjectCard = ({ className, project, ...rest }) => {
       {...rest}
     >
       <Box p={3}>
-        <CardMedia
-          className={classes.image}
-          image={project.image}
-        />
+        <CardMedia />
         <Box
           display="flex"
           alignItems="center"
@@ -173,55 +170,6 @@ const ProjectCard = ({ className, project, ...rest }) => {
         </Grid>
       </Box>
       <Divider />
-      <Box
-        py={2}
-        pl={2}
-        pr={3}
-        display="flex"
-        alignItems="center"
-      >
-        {isLiked ? (
-          <Tooltip title="Unlike">
-            <IconButton
-              className={classes.likedButton}
-              onClick={handleUnlike}
-            >
-              <FavoriteIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Like">
-            <IconButton onClick={handleLike}>
-              <FavoriteBorderIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-        )}
-        <Typography
-          variant="subtitle2"
-          color="textSecondary"
-        >
-          {likesCount}
-        </Typography>
-        <SvgIcon
-          fontSize="small"
-          color="action"
-          className={classes.membersIcon}
-        >
-          <UsersIcon />
-        </SvgIcon>
-        <Typography
-          variant="subtitle2"
-          color="textSecondary"
-        >
-          {project.membersCount}
-        </Typography>
-        <Box flexGrow={1} />
-        <Rating
-          value={project.rating}
-          size="small"
-          readOnly
-        />
-      </Box>
     </Card>
   );
 };

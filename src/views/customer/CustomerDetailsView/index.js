@@ -16,8 +16,6 @@ import axios from 'src/utils/axios';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import Header from './Header';
 import Details from './Details';
-import Invoices from './Invoices';
-import Logs from './Logs';
 import InvoiceDetailsView from './Invoices/InvoiceListView/index';
 import OrderListView from './Orders/OrderListView/index';
 

@@ -56,14 +56,14 @@ const Header = ({
             variant="body1"
             color="textPrimary"
           >
-            Shift
+            Appointment
           </Typography>
         </Breadcrumbs>
         <Typography
           variant="h3"
           color="textPrimary"
         >
-          Here&apos;s your employee shift arrangement agenda
+          Here&apos;re the appointments
         </Typography>
       </Grid>
       <Grid item>

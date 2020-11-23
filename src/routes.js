@@ -82,13 +82,13 @@ const routes = [
       },
       {
         exact: true,
-        path: '/app/calendar',
-        component: lazy(() => import('src/views/calendar/CalendarView'))
+        path: '/app/appointment',
+        component: lazy(() => import('src/views/appointment/AppointmentView'))
       },
       {
         exact: true,
-        path: '/app/kanban',
-        component: lazy(() => import('src/views/kanban/KanbanView'))
+        path: '/app/shift',
+        component: lazy(() => import('src/views/shift/ShiftView'))
       },
       {
         exact: true,
@@ -139,31 +139,6 @@ const routes = [
         exact: true,
         path: '/app/management',
         component: () => <Redirect to="/app/management/customers" />
-      },
-      {
-        exact: true,
-        path: '/app/projects/overview',
-        component: lazy(() => import('src/views/project/OverviewView'))
-      },
-      {
-        exact: true,
-        path: '/app/projects/browse',
-        component: lazy(() => import('src/views/project/ProjectBrowseView'))
-      },
-      {
-        exact: true,
-        path: '/app/projects/create',
-        component: lazy(() => import('src/views/project/ProjectCreateView'))
-      },
-      {
-        exact: true,
-        path: '/app/projects/:id',
-        component: lazy(() => import('src/views/project/ProjectDetailsView'))
-      },
-      {
-        exact: true,
-        path: '/app/projects',
-        component: () => <Redirect to="/app/projects/browse" />
       },
       {
         component: () => <Redirect to="/404" />

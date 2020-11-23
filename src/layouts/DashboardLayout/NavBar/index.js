@@ -35,36 +35,13 @@ const sections = [
     subheader: 'Management',
     items: [
       {
-        title: 'Projects Platform',
-        href: '/app/projects',
-        icon: BriefcaseIcon,
-        items: [
-          {
-            title: 'Overview',
-            href: '/app/projects/overview'
-          },
-          {
-            title: 'Browse Projects',
-            href: '/app/projects/browse'
-          },
-          {
-            title: 'Create Project',
-            href: '/app/projects/create'
-          },
-          {
-            title: 'View Project',
-            href: '/app/projects/1'
-          }
-        ]
+        title: 'Appointment',
+        href: '/app/appointment',
+        icon: CalendarIcon
       },
       {
-        title: 'Kanban',
-        href: '/app/kanban',
-        icon: TrelloIcon
-      },
-      {
-        title: 'Calendar',
-        href: '/app/calendar',
+        title: 'Shift',
+        href: '/app/shift',
         icon: CalendarIcon
       },
       {

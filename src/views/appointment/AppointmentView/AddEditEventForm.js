@@ -25,7 +25,7 @@ import {
   createEvent,
   updateEvent,
   deleteEvent
-} from 'src/slices/shift';
+} from 'src/slices/appointment';
 
 const getInitialValues = (event, range) => {
   if (event) {
@@ -35,7 +35,7 @@ const getInitialValues = (event, range) => {
       description: '',
       end: moment().add(30, 'minutes').toDate(),
       start: moment().toDate(),
-      employee: '',
+      title: '',
       submit: null
     }, event);
   }
@@ -47,7 +47,7 @@ const getInitialValues = (event, range) => {
       description: '',
       end: new Date(range.end),
       start: new Date(range.start),
-      employee: '',
+      title: '',
       submit: null
     }, event);
   }
@@ -58,7 +58,7 @@ const getInitialValues = (event, range) => {
     description: '',
     end: moment().add(30, 'minutes').toDate(),
     start: moment().toDate(),
-    employee: '',
+    title: '',
     submit: null
   };
 };
@@ -105,7 +105,7 @@ const AddEditEventForm = ({
             (start, schema) => (start && schema.min(start, 'End date must be later than start date'))
           ),
         start: Yup.date(),
-        employee: Yup.string().max(255).required('Employee name is required')
+        title: Yup.string().max(255).required('Title is required')
       })}
       onSubmit={async (values, {
         resetForm,
@@ -119,7 +119,7 @@ const AddEditEventForm = ({
             description: values.description,
             end: values.end,
             start: values.start,
-            employee: values.employee
+            title: values.title
           };
 
           if (event) {
@@ -172,14 +172,14 @@ const AddEditEventForm = ({
           </Box>
           <Box p={3}>
             <TextField
-              error={Boolean(touched.employee && errors.employee)}
+              error={Boolean(touched.title && errors.title)}
               fullWidth
-              helperText={touched.employee && errors.employee}
-              label="Employee"
-              name="employee"
+              helperText={touched.title && errors.title}
+              label="Title"
+              name="title"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.employee}
+              value={values.title}
               variant="outlined"
             />
             <Box mt={2}>

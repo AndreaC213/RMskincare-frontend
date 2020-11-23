@@ -203,7 +203,7 @@ const Results = ({ className, orders, ...rest }) => {
                         </IconButton>
                         <IconButton
                           component={RouterLink}
-                          to="/app/management//api/customers/1/orders/1"
+                          to="/app/management/api/customers/1/orders/1"
                         >
                           <SvgIcon fontSize="small">
                             <ArrowRightIcon />
